@@ -1,39 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="/static/css/output.css">
+    <link rel="stylesheet" href="/static/css/output.css" />
     <title>FastApi Demo</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="mx-4">
-        <p class="text-2xl font-bold mb-4">Machine Learing Library</p>
-        <table class="min-w-[50%] mb-4">
-            <thead class="border-b text-lg">
-                <tr>
-                    <th class="border">Library Name</th>
-                    <th class="border">Import</th>
-                </tr>
-            </thead>
-            <tbody class="text-center text-sm">
-            {% for _ in lib %}
-                <tr>
-                    <td class="border">{{_.name}}</td>
-                    <td class="border">{{_.import}}</td>
-                </tr>
-            {% endfor %}            
-            </tbody>
-        </table>
+      <p class="text-2xl font-bold mb-4">Machine Learing Library</p>
+      <table class="min-w-[50%] mb-4">
+        <thead class="border-b text-lg">
+          <tr>
+            <th class="border">Library Name</th>
+            <th class="border">Import</th>
+          </tr>
+        </thead>
+        <tbody class="text-center text-sm">
+          {% for _ in lib %}
+          <tr>
+            <td class="border">{{_.name}}</td>
+            <td class="border">{{_.import}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
 
-        <button class="px-3 py-1 bg-blue-600 text-white ml-4" hx-get="/index" >Load More</button>
-
+      <button class="px-3 py-1 bg-blue-600 text-white ml-4" hx-get="/index">
+        Load More
+      </button>
     </div>
-</body>
+  </body>
 
-<script src="/static/htmx.org/dist/htmx.min.js"></script>
-
+  <script src="/static/htmx.org/dist/htmx.min.js"></script>
 </html>

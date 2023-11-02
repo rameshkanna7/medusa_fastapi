@@ -19,4 +19,6 @@ data = [
 
 @app.get("/index", response_class=HTMLResponse)
 async def root_page(request: Request):
-    return templates.TemplateResponse("index.html", context={"request": request, "lib":data})
+    return templates.TemplateResponse(
+        "index.html", context={"request": request, "lib": data}
+    )
