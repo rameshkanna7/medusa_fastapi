@@ -9,7 +9,14 @@ app = FastAPI()
 templates = Jinja2Templates(directory=Path("my_app") / "templates")
 app.mount("/static", StaticFiles(directory=Path("my_app") / "static"), name="static")
 
+data = [
+    {"name": "Pandas", "import": "pd"},
+    {"name": "Numpy", "import": "np"},
+    {"name": "Matplotlib", "import": "pyplot"},
+    {"name": "tensorflow", "import": "tf"},
+]
 
-@app.get("/", response_class=HTMLResponse)
+
+@app.get("/index", response_class=HTMLResponse)
 async def root_page(request: Request):
-    return templates.TemplateResponse("index.html", context={"request": request})
+    return templates.TemplateResponse("index.html", context={"request": request, "lib":data})
