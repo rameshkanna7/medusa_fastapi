@@ -18,17 +18,12 @@
             <th class="border">Import</th>
           </tr>
         </thead>
-        <tbody class="text-center text-sm">
-          {% for _ in lib %}
-          <tr>
-            <td class="border">{{_.name}}</td>
-            <td class="border">{{_.import}}</td>
-          </tr>
-          {% endfor %}
+        <tbody class="text-center text-sm" id="table-body">
+            {% include 'table.html' %}
         </tbody>
       </table>
 
-      <button class="px-3 py-1 bg-blue-600 text-white ml-4" hx-get="/index">
+      <button class="px-3 py-1 bg-blue-600 text-white ml-4" hx-get="/index" hx-target="#table-body"  hx-swap="beforeend">
         Load More
       </button>
     </div>
