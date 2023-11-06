@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/output.css" />
+    <title>Document</title>
+  </head>
+  <body class="p-5">
+    <h1 class="text-center text-lg text-blue-400">Hello Tailwind</h1>
+    <div
+      class="w-full h-10 bg-violet-200 border-violet-600 rounded-md my-4 p-2 border-2"
+    >
+      <p class="text-center font-mono font-extrabold">A div</p>
+    </div>
+    <!-- Layout -->
+    <div class="fixed w-full h-5 bg-red-500 top-0"></div>
+    <div class="flex justify-between space-x-2">
+      <div class="h-16 w-16 rounded-full bg-blue-500"></div>
+      <div class="h-16 w-16 rounded-full bg-blue-500"></div>
+      <div class="h-16 w-16 rounded-full bg-blue-500"></div>
+    </div>
+
+    <div class="grid grid-cols-6 gap-2">
+      <div class="bg-violet-500 h-12"></div>
+      <div class="bg-violet-500 h-12"></div>
+      <div class="bg-violet-500 h-12"></div>
+      <div class="bg-violet-500 h-12"></div>
+      <div class="bg-violet-500 h-12"></div>
+      <div class="bg-violet-500 h-12"></div>
+    </div>
+
+    <div class="md:block hidden">
+      <p>I will appear for device resolution > 768px</p>
+    </div>
+
+    <div class="max-md:block hidden">
+      <p>I will appear for device resolution < 768px</p>
+    </div>
+
+    <button
+      class="my-2 rounded-lg bg-blue-500 px-4 py-2 text-white hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 active:bg-blue-800"
+    >
+      Click Me
+    </button>
+    <ul class="my-2 space-y-2">
+      <li class="rounded-md bg-white p-2 first:bg-yellow-100">Data 1</li>
+      <li
+        class="rounded-md bg-white p-2 first:bg-yellow-100 odd:bg-blue-200 even:bg-green-200"
+      >
+        Data 2
+      </li>
+      <li
+        class="rounded-md bg-white p-2 first:bg-yellow-100 odd:bg-blue-200 even:bg-green-200"
+      >
+        Data 3
+      </li>
+      <li
+        class="rounded-md bg-white p-2 first:bg-yellow-100 odd:bg-blue-200 even:bg-green-200"
+      >
+        Data 4
+      </li>
+      <li
+        class="rounded-md bg-white p-2 first:bg-yellow-100 odd:bg-blue-200 even:bg-green-200"
+      >
+        Data 5
+      </li>
+    </ul>
+
+    <!-- Theme dark: -->
+    <div
+      class="card"
+    >
+      <h3 class="text-base font-medium tracking-tight text-slate-900 dark:text-white">
+        This is a text element
+      </h3>
+      <p class="mt-2 text-sm text-slate-500">
+        This is an even longer p tag element
+      </p>
+      <button
+        id="toggleDark"
+        class="text-blue-900 px-4 py-2 text-sm font-medium mt-8 bg-blue-100 rounded-md"
+        onclick="document.body.classList.toggle('dark')"
+      >
+        Toggle Dark Mode
+      </button>
+    </div>
+
+    <button class="special-button">Click Me</button>
+    <p class="text-2xl text-[#973F29] bg-stone-100 p-2">Chestnut Color</p>
+  </body>
+  <script src="/static/htmx.org/dist/htmx.min.js"></script>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleDark = document.getElementById("toggleDark");
+      toggleDark.addEventListener("click", function () {
+        if (document.documentElement.classList.includes("dark")) {
+          document.documentElement.classList.remove("dark");
+        } else {
+          document.documentElement.classList.add("dark");
+        }
+        alert("click!");
+      });
+    });
+  </script>
+</html>
