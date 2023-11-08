@@ -31,18 +31,20 @@ data = [
 
 
 @app.get("/index", response_class=HTMLResponse)
-async def root_page(request: Request, hx_request: Optional[str] = Header(None)):
-    if hx_request:
-        return templates.TemplateResponse(
-            "table.html", context={"request": request, "lib": data}
-        )
+async def index_page(request: Request):
+    return templates.TemplateResponse("cards.html", context={"request": request})
+
+
+@app.get("/calendar", response_class=HTMLResponse)
+async def calendar_page(request: Request):
+    list_data = range(30)
     return templates.TemplateResponse(
-        "index.html", context={"request": request, "lib": data}
+        "ocr.html", context={"request": request, "data": list_data}
     )
 
 
 @app.get("/tailwind", response_class=HTMLResponse)
-async def root_page(request: Request, hx_request: Optional[str] = Header(None)):
+async def tailwind(request: Request, hx_request: Optional[str] = Header(None)):
     if hx_request:
         return templates.TemplateResponse(
             "table.html", context={"request": request, "lib": data}
@@ -53,7 +55,7 @@ async def root_page(request: Request, hx_request: Optional[str] = Header(None)):
 
 
 @app.get("/")
-async def read_root(db: Session = Depends(get_db)):
+async def database_check(db: Session = Depends(get_db)):
     # Use the 'db' session for database operations
     result = db.execute("SELECT top(1) * FROM HUB_TEST")
     rows = result.fetchall()

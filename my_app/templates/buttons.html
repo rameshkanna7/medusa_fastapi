@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', path='css/bootstrap.css') }}"
+    />
+    <style>
+      [class*="col"] {
+        padding: 1rem;
+        background-color: #33b5e5;
+        border: 2px solid #fff;
+        color: #fff;
+      }
+      .child {
+        background-color: #2041d3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <button>Normal</button>
+          <button class="btn btn-primary">primary</button>
+          <button class="btn btn-secondary">secondary</button>
+          <button class="btn btn-success">success</button>
+          <button class="btn btn-danger">danger</button>
+          <button class="btn btn-warning">warning</button>
+          <button class="btn btn-info">info</button>
+          <button class="btn btn-light">light</button>
+          <button class="btn btn-dark">dark</button>
+        </div>
+
+        <div class="col">
+          <button>Normal</button>
+          <button class="btn btn-outline-primary">primary</button>
+          <button class="btn btn-outline-secondary">secondary</button>
+          <button class="btn btn-outline-success">success</button>
+          <button class="btn btn-outline-danger">danger</button>
+          <button class="btn btn-outline-warning btn-lg">warning</button>
+          <button class="btn btn-outline-info btn-regular">info</button>
+          <button class="btn btn-outline-light btn-sm">light</button>
+          <button class="btn btn-outline-dark disabled">dark</button>
+        </div>
+      </div>
+    </div>
+    <script src="{{ url_for('static', path='js/bootstrap.bundle.js')}}"></script>
+  </body>
+</html>

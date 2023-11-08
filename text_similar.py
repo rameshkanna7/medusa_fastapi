@@ -1,34 +1,21 @@
 import re
-from difflib import SequenceMatcher
 
 
 def preprocess_text(text):
-    # Define stopwords and create a set for faster lookup
-    stopwords = {"the", "of", "and", "in", "for", "a", "an"}
-
-    # Initialize a list to store valid words
-    words = []
-
-    # Split text into words, lowercase them, and filter out stopwords
-    for word in text.lower().split():
-        word = re.sub(r"[^\w]", "", word)  # Remove punctuation
-        if word and word not in stopwords and len(word) >= 2:
-            words.append(word)
-
+    # Split text into words, lowercase them, and remove punctuation
+    words = re.findall(r"\w+", text.lower())
     return words
 
 
-def compare_words(a, b):
-    a_words = preprocess_text(a)
-    b_words = preprocess_text(b)
-    return set(a_words), set(b_words)
-
-
-def similar(a, b):
-    a_words, b_words = compare_words(a, b)
+def common_word_percentage(a, b):
+    a_words = set(preprocess_text(a))
+    b_words = set(preprocess_text(b))
 
     common_words = a_words.intersection(b_words)
-    return common_words
+    total_words = a_words.union(b_words)
+
+    percentage = len(common_words) / len(total_words) * 100
+    return common_words, percentage
 
 
 # Input texts
@@ -71,15 +58,8 @@ text2 = """Rec: UNIMARC MARC:
 999   $5751025206:057871345 $zA/3 H 10
 """
 
-# Compare words in both texts
-common_words = similar(text1, text2)
-
-# Calculate the percentage
-percentage = (
-    len(common_words)
-    / (len(compare_words(text1, text1)[0]) + len(compare_words(text2, text2)[0]))
-    * 100
-)
+# Calculate common words and percentage
+common_words, percentage = common_word_percentage(text1, text2)
 
 print("Common words in both texts:")
 for word in common_words:
